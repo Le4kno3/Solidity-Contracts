@@ -1,9 +1,11 @@
 import { ethers } from "hardhat";
+// import { ethers } from "@nomiclabs/hardhat-ethers";
 import fs from "fs";
 
 async function main() {
 
-  const [signer] = ethers.getSigners();
+  const [signer] = await ethers.getSigners();
+  // Promise<ethers.Signer[]>
   // We get the contract to deploy
 
   const NFTMarket = await ethers.getContractFactory("NFTMarket");

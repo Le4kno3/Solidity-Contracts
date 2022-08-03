@@ -1,18 +1,36 @@
 {
-  "exclude": ["dist", "node_modules"],
-  "include": ["./test", "./src", "./scripts"],
-  "files": ["./hardhat.config.ts"],
   "compilerOptions": {
-    "lib": ["es5", "es6", "dom", "dom.iterable"],
-    "target": "ES2017",
-    "module": "commonjs",
-    "declaration": true,
-    "declarationMap": true,
-    "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
-    "outDir": "./dist",
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "rootDirs": ["./src", "./scripts", "./test"],
-    "esModuleInterop": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "declaration": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "incremental": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@cache/*": ["cache/*"],
+      "@libraries/*": ["libraries/*"],
+      "@styles/*": ["styles/*"],
+      "@components/*": ["components/*"],
+      "@artifacts/*": ["artifacts/*"],
+      "@pages/*": ["pages/*"],
+      "@contexts/*": ["contexts/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "build"]
 }
