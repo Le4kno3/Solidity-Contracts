@@ -3,10 +3,10 @@ import fs from "fs";
 
 async function main() {
 
-  const signer = ethers.provider.getSigner();
+  const [signer] = ethers.getSigners();
   // We get the contract to deploy
 
-  const NFTMarket = await ethers.getContractFactory("NFTMarket", signer);
+  const NFTMarket = await ethers.getContractFactory("NFTMarket");
   const myNFTMarket = await NFTMarket.deploy();
   await myNFTMarket.deployed();
 
@@ -15,7 +15,7 @@ async function main() {
   console.log("NFTMarket contract deployed to:", myNFTMarket.address);
 
   // We get the contract to deploy
-  const NFTToken = await ethers.getContractFactory("NFTToken", signer);
+  const NFTToken = await ethers.getContractFactory("NFTToken");
   const myNFTToken = await NFTToken.deploy(myNFTMarket.address);
 
   await myNFTToken.deployed();
@@ -23,7 +23,7 @@ async function main() {
   console.log("NFTToken contract deployed to:", myNFTToken.address);
 
   //Mint A token from other contract.
-  const OtherNFTToken = await ethers.getContractFactory("OtherNFTToken", signer);
+  const OtherNFTToken = await ethers.getContractFactory("OtherNFTToken");
   const myOtherNFTToken = await OtherNFTToken.deploy();
 
   await myOtherNFTToken.deployed();

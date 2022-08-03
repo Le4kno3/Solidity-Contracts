@@ -29,7 +29,7 @@ const config: HardhatUserConfig = {
       gasPrice: 8000000000
     }
   },
-  solidity: "0.8.9",
+  solidity: "0.8.4",
 };
 
 export default config;
