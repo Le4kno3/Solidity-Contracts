@@ -2,7 +2,7 @@
 
 ### Problem Statement
 
-* Write a contract to print a string "Hello World!".
+* Write a contract with 1 function which prints a string "Hello World!".
 * Printing should not involve any gas.
 
 ### Hints
