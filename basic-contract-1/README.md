@@ -2,7 +2,11 @@
 
 ### Problem Statement
 
-Write a contract to print a string "Hello World!". Printing should not involve any gas (use `view` or `pure` function modifier) .
+* Write a contract to print a string "Hello World!".
+* Printing should not involve any gas.
+
+### Hints
+"hints" folder has hint
 
 ### Solution
 "contracts" folder has the solutions.
