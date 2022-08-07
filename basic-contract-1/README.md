@@ -6,5 +6,5 @@ Write a contract to print a string "Hello World!". Printing should not involve a
 
 ### Solution Screenshots
 
-![](output/output1.png?raw=true)
-![](output/output2.png?raw=true)
+![screenshot 1](output/output1.png)
+![screenshot 2](output/output2.png)
