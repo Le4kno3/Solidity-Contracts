@@ -27,4 +27,4 @@ yarn add --dev typescript ts-node dotenv @nomiclabs/hardhat-waffle @nomicfoundat
 
 - Run `npx hardhat test`
 - On success the result will look like below:
-  ![Success Screenshot](./success.png?raw=true)
+  ![Success Screenshot](https://github.com/Le4kno3/Solidity-Contracts-Practice/blob/main/success.png?raw=true)
