@@ -21,4 +21,10 @@ yarn add --dev typescript ts-node dotenv @nomiclabs/hardhat-waffle @nomicfoundat
 
 ### Step 4:
 
-- d
+- Make sure the network is selected to "hardhat" or no network (default hardhat network will also work)
+
+### Step 5:
+
+- Run `npx hardhat test`
+- On success the result will look like below:
+  ![Success Screenshot](./success.png?raw=true)
