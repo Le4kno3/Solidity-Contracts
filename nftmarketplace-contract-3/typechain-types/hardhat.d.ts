@@ -41,17 +41,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC165__factory>;
     getContractFactory(
-      name: "Greeter",
+      name: "NFTMarket",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Greeter__factory>;
+    ): Promise<Contracts.NFTMarket__factory>;
     getContractFactory(
-      name: "Market",
+      name: "NFTToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Market__factory>;
+    ): Promise<Contracts.NFTToken__factory>;
     getContractFactory(
-      name: "NFT",
+      name: "OtherNFTToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.NFT__factory>;
+    ): Promise<Contracts.OtherNFTToken__factory>;
 
     getContractAt(
       name: "ERC721",
@@ -89,20 +89,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC165>;
     getContractAt(
-      name: "Greeter",
+      name: "NFTMarket",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.Greeter>;
+    ): Promise<Contracts.NFTMarket>;
     getContractAt(
-      name: "Market",
+      name: "NFTToken",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.Market>;
+    ): Promise<Contracts.NFTToken>;
     getContractAt(
-      name: "NFT",
+      name: "OtherNFTToken",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.NFT>;
+    ): Promise<Contracts.OtherNFTToken>;
 
     // default types
     getContractFactory(

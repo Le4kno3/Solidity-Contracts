@@ -5,30 +5,48 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 async function main() {
-  const Market = await ethers.getContractFactory("Market");
-  const market = await Market.deploy();
-  await market.deployed();
-  console.log(`market contract deployed to ${market.address}`);
 
-  const NFT = await ethers.getContractFactory("NFT");
-  const nft = await NFT.deploy(market.address);
-  await nft.deployed();
-  console.log(`nft contract deployed to ${nft.address}`);
+  const [owner, nftbuyer, nftseller] = await ethers.getSigners();
+  // Promise<ethers.Signer[]>
+  // We get the contract to deploy
 
-  const rpc_url = process.env.MUMBAITESTNET_URL;
+  const NFTMarket = await ethers.getContractFactory("NFTMarket", owner);
+  const myNFTMarket = await NFTMarket.deploy();
+  await myNFTMarket.deployed();
+
+  const signerAddress = await owner.getAddress();
+  const nftBuyerAddress = await nftbuyer.getAddress();
+  const nftSellerAddress = await nftseller.getAddress();
+  console.log("Owner address:", signerAddress);
+  console.log("NFT buyer address:", nftBuyerAddress);
+  console.log("NFT seller address:", nftSellerAddress);
+  console.log("NFTMarket contract deployed to:", myNFTMarket.address);
+
+  // We get the contract to deploy
+  const NFTToken = await ethers.getContractFactory("NFTToken", owner);
+  const myNFTToken = await NFTToken.deploy(myNFTMarket.address);
+
+  await myNFTToken.deployed();
+
+  console.log("NFTToken contract deployed to:", myNFTToken.address);
 
   let config = `
-  export const nftmarketaddress = "${market.address}"
-  export const nftaddress = "${nft.address}"
-  export const rpc_url = "${rpc_url}"`;
+  export const nftMarketplaceAddress = "${myNFTMarket.address}"
+  export const nftTokenAddress = "${myNFTToken.address}"
+  export const nftContractOwner = "${signerAddress}"
+  export const nftBuyer = "${nftBuyerAddress}"
+  export const nftSeller = "${nftSellerAddress}"`;
 
   let data = JSON.stringify(config);
   fs.writeFileSync('cache/deploy.ts', JSON.parse(data));
 }
 
+
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

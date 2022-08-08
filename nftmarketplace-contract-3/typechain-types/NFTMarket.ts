@@ -8,6 +8,7 @@ import {
   BytesLike,
   CallOverrides,
   ContractTransaction,
+  Overrides,
   PayableOverrides,
   PopulatedTransaction,
   Signer,
@@ -21,7 +22,6 @@ export type MarketItemStruct = {
   itemId: BigNumberish;
   nftContract: string;
   tokenId: BigNumberish;
-  creator: string;
   seller: string;
   owner: string;
   price: BigNumberish;
@@ -34,14 +34,12 @@ export type MarketItemStructOutput = [
   BigNumber,
   string,
   string,
-  string,
   BigNumber,
   boolean
 ] & {
   itemId: BigNumber;
   nftContract: string;
   tokenId: BigNumber;
-  creator: string;
   seller: string;
   owner: string;
   price: BigNumber;
@@ -52,13 +50,12 @@ export interface NFTMarketInterface extends utils.Interface {
   functions: {
     "createMarketItem(address,uint256,uint256)": FunctionFragment;
     "createMarketSale(address,uint256)": FunctionFragment;
-    "fetchAuthorsCreations(address)": FunctionFragment;
-    "fetchMarketItems()": FunctionFragment;
-    "fetchMyNFTs()": FunctionFragment;
-    "fetchSingleItem(uint256)": FunctionFragment;
+    "fetchMyItemsCreated()": FunctionFragment;
+    "fetchMyPurchasedNFTs()": FunctionFragment;
+    "fetchMyUnsoldNFTs()": FunctionFragment;
+    "fetchRemainingMarketItems()": FunctionFragment;
     "getListingPrice()": FunctionFragment;
-    "putItemToResell(address,uint256,uint256)": FunctionFragment;
-    "updateMarketItemPrice(uint256,uint256)": FunctionFragment;
+    "setListingPrice(uint256)": FunctionFragment;
   };
 
   encodeFunctionData(
@@ -70,32 +67,28 @@ export interface NFTMarketInterface extends utils.Interface {
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "fetchAuthorsCreations",
-    values: [string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "fetchMarketItems",
+    functionFragment: "fetchMyItemsCreated",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "fetchMyNFTs",
+    functionFragment: "fetchMyPurchasedNFTs",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "fetchSingleItem",
-    values: [BigNumberish]
+    functionFragment: "fetchMyUnsoldNFTs",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "fetchRemainingMarketItems",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "getListingPrice",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "putItemToResell",
-    values: [string, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "updateMarketItemPrice",
-    values: [BigNumberish, BigNumberish]
+    functionFragment: "setListingPrice",
+    values: [BigNumberish]
   ): string;
 
   decodeFunctionResult(
@@ -107,19 +100,19 @@ export interface NFTMarketInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "fetchAuthorsCreations",
+    functionFragment: "fetchMyItemsCreated",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "fetchMarketItems",
+    functionFragment: "fetchMyPurchasedNFTs",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "fetchMyNFTs",
+    functionFragment: "fetchMyUnsoldNFTs",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "fetchSingleItem",
+    functionFragment: "fetchRemainingMarketItems",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -127,78 +120,32 @@ export interface NFTMarketInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "putItemToResell",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "updateMarketItemPrice",
+    functionFragment: "setListingPrice",
     data: BytesLike
   ): Result;
 
   events: {
-    "MarketItemCreated(uint256,address,uint256,address,address,address,uint256)": EventFragment;
-    "MarketItemDeleted(uint256)": EventFragment;
-    "ProductListed(uint256)": EventFragment;
-    "ProductSold(uint256,address,uint256,address,address,address,uint256)": EventFragment;
-    "ProductUpdated(uint256,uint256,uint256)": EventFragment;
+    "MarketItemCreated(uint256,address,uint256,address,address,uint256,bool)": EventFragment;
   };
 
   getEvent(nameOrSignatureOrTopic: "MarketItemCreated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "MarketItemDeleted"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ProductListed"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ProductSold"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ProductUpdated"): EventFragment;
 }
 
 export type MarketItemCreatedEvent = TypedEvent<
-  [BigNumber, string, BigNumber, string, string, string, BigNumber],
+  [BigNumber, string, BigNumber, string, string, BigNumber, boolean],
   {
     itemId: BigNumber;
     nftContract: string;
     tokenId: BigNumber;
-    creator: string;
     seller: string;
     owner: string;
     price: BigNumber;
+    sold: boolean;
   }
 >;
 
 export type MarketItemCreatedEventFilter =
   TypedEventFilter<MarketItemCreatedEvent>;
-
-export type MarketItemDeletedEvent = TypedEvent<
-  [BigNumber],
-  { itemId: BigNumber }
->;
-
-export type MarketItemDeletedEventFilter =
-  TypedEventFilter<MarketItemDeletedEvent>;
-
-export type ProductListedEvent = TypedEvent<[BigNumber], { itemId: BigNumber }>;
-
-export type ProductListedEventFilter = TypedEventFilter<ProductListedEvent>;
-
-export type ProductSoldEvent = TypedEvent<
-  [BigNumber, string, BigNumber, string, string, string, BigNumber],
-  {
-    itemId: BigNumber;
-    nftContract: string;
-    tokenId: BigNumber;
-    creator: string;
-    seller: string;
-    owner: string;
-    price: BigNumber;
-  }
->;
-
-export type ProductSoldEventFilter = TypedEventFilter<ProductSoldEvent>;
-
-export type ProductUpdatedEvent = TypedEvent<
-  [BigNumber, BigNumber, BigNumber],
-  { itemId: BigNumber; oldPrice: BigNumber; newPrice: BigNumber }
->;
-
-export type ProductUpdatedEventFilter = TypedEventFilter<ProductUpdatedEvent>;
 
 export interface NFTMarket extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -240,35 +187,27 @@ export interface NFTMarket extends BaseContract {
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    fetchAuthorsCreations(
-      author: string,
+    fetchMyItemsCreated(
       overrides?: CallOverrides
     ): Promise<[MarketItemStructOutput[]]>;
 
-    fetchMarketItems(
+    fetchMyPurchasedNFTs(
       overrides?: CallOverrides
     ): Promise<[MarketItemStructOutput[]]>;
 
-    fetchMyNFTs(overrides?: CallOverrides): Promise<[MarketItemStructOutput[]]>;
-
-    fetchSingleItem(
-      id: BigNumberish,
+    fetchMyUnsoldNFTs(
       overrides?: CallOverrides
-    ): Promise<[MarketItemStructOutput]>;
+    ): Promise<[MarketItemStructOutput[]]>;
+
+    fetchRemainingMarketItems(
+      overrides?: CallOverrides
+    ): Promise<[MarketItemStructOutput[]]>;
 
     getListingPrice(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    putItemToResell(
-      nftContract: string,
-      itemId: BigNumberish,
-      newPrice: BigNumberish,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    updateMarketItemPrice(
-      id: BigNumberish,
-      newPrice: BigNumberish,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
+    setListingPrice(
+      inputPrice: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
   };
 
@@ -285,35 +224,27 @@ export interface NFTMarket extends BaseContract {
     overrides?: PayableOverrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  fetchAuthorsCreations(
-    author: string,
+  fetchMyItemsCreated(
     overrides?: CallOverrides
   ): Promise<MarketItemStructOutput[]>;
 
-  fetchMarketItems(
+  fetchMyPurchasedNFTs(
     overrides?: CallOverrides
   ): Promise<MarketItemStructOutput[]>;
 
-  fetchMyNFTs(overrides?: CallOverrides): Promise<MarketItemStructOutput[]>;
-
-  fetchSingleItem(
-    id: BigNumberish,
+  fetchMyUnsoldNFTs(
     overrides?: CallOverrides
-  ): Promise<MarketItemStructOutput>;
+  ): Promise<MarketItemStructOutput[]>;
+
+  fetchRemainingMarketItems(
+    overrides?: CallOverrides
+  ): Promise<MarketItemStructOutput[]>;
 
   getListingPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
-  putItemToResell(
-    nftContract: string,
-    itemId: BigNumberish,
-    newPrice: BigNumberish,
-    overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  updateMarketItemPrice(
-    id: BigNumberish,
-    newPrice: BigNumberish,
-    overrides?: PayableOverrides & { from?: string | Promise<string> }
+  setListingPrice(
+    inputPrice: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   callStatic: {
@@ -330,95 +261,49 @@ export interface NFTMarket extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    fetchAuthorsCreations(
-      author: string,
+    fetchMyItemsCreated(
       overrides?: CallOverrides
     ): Promise<MarketItemStructOutput[]>;
 
-    fetchMarketItems(
+    fetchMyPurchasedNFTs(
       overrides?: CallOverrides
     ): Promise<MarketItemStructOutput[]>;
 
-    fetchMyNFTs(overrides?: CallOverrides): Promise<MarketItemStructOutput[]>;
-
-    fetchSingleItem(
-      id: BigNumberish,
+    fetchMyUnsoldNFTs(
       overrides?: CallOverrides
-    ): Promise<MarketItemStructOutput>;
+    ): Promise<MarketItemStructOutput[]>;
+
+    fetchRemainingMarketItems(
+      overrides?: CallOverrides
+    ): Promise<MarketItemStructOutput[]>;
 
     getListingPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
-    putItemToResell(
-      nftContract: string,
-      itemId: BigNumberish,
-      newPrice: BigNumberish,
+    setListingPrice(
+      inputPrice: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
-
-    updateMarketItemPrice(
-      id: BigNumberish,
-      newPrice: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<BigNumber>;
   };
 
   filters: {
-    "MarketItemCreated(uint256,address,uint256,address,address,address,uint256)"(
+    "MarketItemCreated(uint256,address,uint256,address,address,uint256,bool)"(
       itemId?: BigNumberish | null,
       nftContract?: string | null,
       tokenId?: BigNumberish | null,
-      creator?: null,
       seller?: null,
       owner?: null,
-      price?: null
+      price?: null,
+      sold?: null
     ): MarketItemCreatedEventFilter;
     MarketItemCreated(
       itemId?: BigNumberish | null,
       nftContract?: string | null,
       tokenId?: BigNumberish | null,
-      creator?: null,
       seller?: null,
       owner?: null,
-      price?: null
+      price?: null,
+      sold?: null
     ): MarketItemCreatedEventFilter;
-
-    "MarketItemDeleted(uint256)"(itemId?: null): MarketItemDeletedEventFilter;
-    MarketItemDeleted(itemId?: null): MarketItemDeletedEventFilter;
-
-    "ProductListed(uint256)"(
-      itemId?: BigNumberish | null
-    ): ProductListedEventFilter;
-    ProductListed(itemId?: BigNumberish | null): ProductListedEventFilter;
-
-    "ProductSold(uint256,address,uint256,address,address,address,uint256)"(
-      itemId?: BigNumberish | null,
-      nftContract?: string | null,
-      tokenId?: BigNumberish | null,
-      creator?: null,
-      seller?: null,
-      owner?: null,
-      price?: null
-    ): ProductSoldEventFilter;
-    ProductSold(
-      itemId?: BigNumberish | null,
-      nftContract?: string | null,
-      tokenId?: BigNumberish | null,
-      creator?: null,
-      seller?: null,
-      owner?: null,
-      price?: null
-    ): ProductSoldEventFilter;
-
-    "ProductUpdated(uint256,uint256,uint256)"(
-      itemId?: BigNumberish | null,
-      oldPrice?: BigNumberish | null,
-      newPrice?: BigNumberish | null
-    ): ProductUpdatedEventFilter;
-    ProductUpdated(
-      itemId?: BigNumberish | null,
-      oldPrice?: BigNumberish | null,
-      newPrice?: BigNumberish | null
-    ): ProductUpdatedEventFilter;
   };
 
   estimateGas: {
@@ -435,33 +320,19 @@ export interface NFTMarket extends BaseContract {
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    fetchAuthorsCreations(
-      author: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    fetchMyItemsCreated(overrides?: CallOverrides): Promise<BigNumber>;
 
-    fetchMarketItems(overrides?: CallOverrides): Promise<BigNumber>;
+    fetchMyPurchasedNFTs(overrides?: CallOverrides): Promise<BigNumber>;
 
-    fetchMyNFTs(overrides?: CallOverrides): Promise<BigNumber>;
+    fetchMyUnsoldNFTs(overrides?: CallOverrides): Promise<BigNumber>;
 
-    fetchSingleItem(
-      id: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    fetchRemainingMarketItems(overrides?: CallOverrides): Promise<BigNumber>;
 
     getListingPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
-    putItemToResell(
-      nftContract: string,
-      itemId: BigNumberish,
-      newPrice: BigNumberish,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    updateMarketItemPrice(
-      id: BigNumberish,
-      newPrice: BigNumberish,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
+    setListingPrice(
+      inputPrice: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
   };
 
@@ -479,33 +350,25 @@ export interface NFTMarket extends BaseContract {
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    fetchAuthorsCreations(
-      author: string,
+    fetchMyItemsCreated(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    fetchMarketItems(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    fetchMyPurchasedNFTs(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
-    fetchMyNFTs(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    fetchMyUnsoldNFTs(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    fetchSingleItem(
-      id: BigNumberish,
+    fetchRemainingMarketItems(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getListingPrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    putItemToResell(
-      nftContract: string,
-      itemId: BigNumberish,
-      newPrice: BigNumberish,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    updateMarketItemPrice(
-      id: BigNumberish,
-      newPrice: BigNumberish,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
+    setListingPrice(
+      inputPrice: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };
 }
