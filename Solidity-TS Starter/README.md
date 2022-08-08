@@ -1,6 +1,6 @@
 ## Hardhat Solidity Development using Typescript - Environment Setup and Starter Code
 
-This instructions are needed in starter code of hardhat typescript starter project, because on June 2022 hardhat did few changes. Below instructions cover the changes.
+This instructions are needed in starter code of hardhat typescript starter project, because on June 2022 hardhat [Ref](https://ethereum.stackexchange.com/questions/120984/property-revertedwith-does-not-exist-on-type-assertion) did few changes. Below instructions cover the changes.
 
 ### Step 1:
 
