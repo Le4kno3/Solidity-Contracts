@@ -1,11 +1,8 @@
 import * as dotenv from "dotenv";
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomiclabs/hardhat-etherscan";
-import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-waffle";
-import "@typechain/hardhat";
-import "hardhat-gas-reporter";
-import "solidity-coverage";
+import "@nomicfoundation/hardhat-chai-matchers";
+import "@nomicfoundation/hardhat-toolbox";
 
 dotenv.config();
 const privateKey = String(process.env.PRIVATE_KEY);
@@ -24,7 +21,7 @@ const config: HardhatUserConfig = {
       },
     ]
   },
-  defaultNetwork: "polygon_mumbai_testnet",
+  defaultNetwork: "hardhat", //hardhat-network-helpers: can only be used in "hardhat" or the "runtime" network. If you want to run the test script on some other blockchain, make sure to remove the use of this library.
   networks: {
     hardhat: {
       chainId: 31337
