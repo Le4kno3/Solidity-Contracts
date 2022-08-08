@@ -1,0 +1,1 @@
+Hint: use `view` or `pure` function modifier, these modifier make sure that the functions does not incur any gas fees.
