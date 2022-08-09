@@ -28,3 +28,10 @@ yarn add --dev typescript ts-node dotenv @nomiclabs/hardhat-waffle @nomicfoundat
 - Run `npx hardhat test`
 - On success the result will look like below:
   ![Success Screenshot](https://github.com/Le4kno3/Solidity-Contracts-Practice/blob/main/success.png?raw=true)
+
+### Tips:
+
+Typescript tsconfig.json file changes does not gets refreshed immediately/automatically. If you are using vscode, then to refresh typescript follow the below steps:
+
+1. Press ctrl+shift+P (opens up command palette)
+2. Search "restart", then select "TypeScript: Restart TS server" to restart typescript server.
