@@ -11,4 +11,5 @@ The projects generally contains
 * sometimes with hint.
 * solution with screenshots.
 
-Some projects are there for simply storage like "NFT Marketplace Projects".
+### References and Credits:
+- https://github.com/Aniket-Engg/solidity-school
