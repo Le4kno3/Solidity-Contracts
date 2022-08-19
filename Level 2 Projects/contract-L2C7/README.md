@@ -1,6 +1,6 @@
 ## LEVEL 2
 
-## Contract 5 Project - SelfWhitelist
+## Contract 7 Project - SelfWhitelist
 
 ## Problem Statement
 

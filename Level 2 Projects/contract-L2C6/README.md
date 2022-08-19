@@ -1,6 +1,6 @@
 ## LEVEL 2
 
-## Contract 5 Project - Time
+## Contract 6 Project - Time
 
 ## Problem Statement
 
