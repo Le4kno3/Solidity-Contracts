@@ -1,4 +1,5 @@
-## Basic 2 Project - Visibility of State Variable
+## LEVEL 1
+## Contract 4 Project - Visibility of State Variable
 
 ### Problem Statement
 

@@ -1,4 +1,5 @@
-## Basic 1 Project - Solidity Contracts
+## LEVEL 1
+## Contract 1 Project - Solidity Contracts
 
 ### Problem Statement
 
