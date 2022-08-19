@@ -15,8 +15,8 @@ addPrime(10) = 2+3+5+7 = 17
 getPrime(10) = 2, 3, 5, 7
 
 Input = 13
-addPrime(10) = 2+3+5+7+11 = 28
-getPrime(10) = 2, 3, 5, 7, 11
+addPrime(13) = 2+3+5+7+11 = 28
+getPrime(13) = 2, 3, 5, 7, 11
 
 ### Hints
 
