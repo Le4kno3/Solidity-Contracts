@@ -1,6 +1,6 @@
 ## LEVEL 2
 
-## Contract 3 Project - Calculator (with gas consumption)
+## Contract 2 Project - Calculator (with gas consumption)
 
 ### Problem Statement
 
