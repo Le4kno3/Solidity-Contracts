@@ -1,6 +1,6 @@
-## LEVEL 3
+## LEVEL 2
 
-## Contract 3 Project - Lifecycle
+## Contract 10 Project - Lifecycle
 
 Write a function `getStage()`, which should take no. of months as a parameter and return the user its lifecycle stage index (0, 1, 2, 3, 4, 5). Stages can be:
 

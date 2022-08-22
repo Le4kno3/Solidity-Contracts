@@ -1,7 +1,7 @@
 pragma solidity 0.8.16;
 //SPDX-License-Identifier: MIT
 
-contract contractL3C3 {
+contract contractL2C10 {
 
     enum Stage{Infant, Toddler, Child, Teen, Adult, Old}
 

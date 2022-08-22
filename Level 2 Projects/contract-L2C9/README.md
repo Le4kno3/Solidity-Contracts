@@ -1,6 +1,6 @@
-## LEVEL 3
+## LEVEL 2
 
-## Contract 2 Project - SafeCalculator
+## Contract 9 Project - SafeCalculator
 
 ## Problem Statement
 

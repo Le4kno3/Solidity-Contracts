@@ -1,6 +1,6 @@
-## LEVEL 3
+## LEVEL 2
 
-## Contract 1 Project - Student
+## Contract 8 Project - Student
 
 ## Problem Statement
 
