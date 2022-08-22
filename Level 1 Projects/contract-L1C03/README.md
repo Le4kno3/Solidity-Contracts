@@ -15,6 +15,7 @@
 
 "contracts" folder has the solutions.
 
-### Screenshots
+### Solution Screenshots
 
-![screenshot 1](screenshots/output.png)
+"screenshots" folder has the screenshots.
+

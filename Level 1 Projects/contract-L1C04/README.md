@@ -18,13 +18,7 @@
 
 "contracts" folder has the solutions.
 
-### Screenshots
+### Solution Screenshots
 
-![screenshot 1](screenshots/output1.png)
-![screenshot 2](screenshots/output2.png)
-![screenshot 3](screenshots/output3.png)
-![screenshot 4](screenshots/output4.png)
-![screenshot 5](screenshots/output5.png)
-![screenshot 6](screenshots/output6.png)
-![screenshot 7](screenshots/output7.png)
-![screenshot 8](screenshots/output8.png)
+"screenshots" folder has the screenshots.
+

@@ -21,6 +21,6 @@ Use `enum` for stage listing. This problem can be solved using the regular condi
 
 "contracts" folder has the solutions.
 
-### Screenshots
+### Solution Screenshots
 
-![screenshot 1](screenshots/output1.png)
+"screenshots" folder has the screenshots.

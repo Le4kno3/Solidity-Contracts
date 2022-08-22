@@ -16,7 +16,7 @@ Write a contract which implements a function named `enroll()`.
 
 "contracts" folder has the solutions.
 
-### Screenshots
+### Solution Screenshots
 
-![screenshot 1](screenshots/output1.png)
-![screenshot 2](screenshots/output2.png)
+"screenshots" folder has the screenshots.
+

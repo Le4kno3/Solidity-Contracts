@@ -1,7 +1,7 @@
 pragma solidity 0.8.15;
 //SPDX-License-Identifier: MIT
 
-contract contractL1C4 {
+contract contractL1C04 {
 
     //this state variable, is defined outside a function so that it can be accessed by both functions.
     //define string and its visibility
