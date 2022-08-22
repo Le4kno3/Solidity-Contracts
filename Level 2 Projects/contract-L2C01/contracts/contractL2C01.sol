@@ -1,7 +1,7 @@
 pragma solidity 0.8.16;
 //SPDX-License-Identifier: MIT
 
-contract contractL2C1 {
+contract contractL2C01 {
 
     uint private A1 = 8;
     uint private B1 = 2;

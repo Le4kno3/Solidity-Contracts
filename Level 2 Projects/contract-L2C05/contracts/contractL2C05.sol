@@ -1,7 +1,7 @@
 pragma solidity 0.8.16;
 //SPDX-License-Identifier: MIT
 
-contract contractL2C5 {
+contract contractL2C05 {
 
     function ifPrime(uint number) private pure returns (bool) {
 

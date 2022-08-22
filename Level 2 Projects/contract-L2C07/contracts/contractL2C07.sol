@@ -1,7 +1,7 @@
 pragma solidity 0.8.16;
 //SPDX-License-Identifier: MIT
 
-contract contractL2C7 {
+contract contractL2C07 {
 
     address[] public whitelisted;
 

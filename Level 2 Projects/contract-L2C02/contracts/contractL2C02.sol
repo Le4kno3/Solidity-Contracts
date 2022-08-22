@@ -1,7 +1,7 @@
 pragma solidity 0.8.16;
 //SPDX-License-Identifier: MIT
 
-contract contractL2C2 {
+contract contractL2C02 {
 
     uint private A1 = 0;    //default value is 0.
     uint private B1 = 0;    //default value is 0.
