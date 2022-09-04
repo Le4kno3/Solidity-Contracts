@@ -10,6 +10,10 @@
 
 "hints" folder has hint
 
+### Tutorials
+
+"tutorials" folder has few simple examples of contracts using Provable Oracle with respective results screenshots.
+
 ### Solution
 
 "contracts" folder has the solutions.
