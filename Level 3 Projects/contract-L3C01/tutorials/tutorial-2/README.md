@@ -18,3 +18,6 @@ After fetching the random number, the execution flow returns back to the contrac
 ![screenshot 4](screenshots/output4.png)
 ![screenshot 5](screenshots/output5.png)
 ![screenshot 6](screenshots/output6.png)
+![screenshot 7](screenshots/output7.png)
+![screenshot 8](screenshots/output8.png)
+![screenshot 9](screenshots/output9.png)
