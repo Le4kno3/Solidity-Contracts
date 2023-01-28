@@ -1,0 +1,12 @@
+- create a new folder and  cd into that folder and run below command
+  - `npm init -y`
+- Then install hardhat
+  - `npm install --save-dev hardhat`
+- Then create new hardhat project, i used typescript in this case, you can use as you like.
+  - `npx hardhat`
+- Install the upgradable openzeppelin plugins
+  - `npm install --save-dev @openzeppelin/hardhat-upgrades`
+
+- For secrecy use dotenv
+  - `npm install dotenv`
+  - Next will be to create dotenv configuration, you can search online for more details how to work with dotenv library in typescript.
