@@ -6,19 +6,21 @@
 
 Ref: https://www.rocketmortgage.com/learn/real-estate-crowdfunding
 
--   Make the `store()` of the L303.sol contract gas free. As you know any state change transaction require gas. The view or pure transaction will not need gas for execution, from external users.
+-   Uprade L303.sol to L303V2.sol.
+- Basically all functions are renamed as NAMEV2 in the new version.
 
-### Hints
-
-"hints" folder has hint
 
 ### Tutorials
+
+Hint: You dont need to initialize the new version, it is automatically initialized from the state variables of previous version.
 
 "tutorials" folder has few simple examples of contracts using Provable Oracle with respective results screenshots.
 
 ### Solution
 
-"contracts" folder has the solutions.
+1. Environment setup for proxy
+2. Configure deploy scripts
+3. Test the deploy scripts
 
 ### Solution Screenshots
 
