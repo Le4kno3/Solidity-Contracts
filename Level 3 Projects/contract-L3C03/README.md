@@ -7,20 +7,19 @@
 Ref: https://www.rocketmortgage.com/learn/real-estate-crowdfunding
 
 -   Uprade L303.sol to L303V2.sol.
-- Basically all functions are renamed as NAMEV2 in the new version.
+-   Basically all functions are renamed as NAMEV2 in the new version.
 
+### Hints
 
-### Tutorials
-
-Hint: You dont need to initialize the new version, it is automatically initialized from the state variables of previous version.
-
-"tutorials" folder has few simple examples of contracts using Provable Oracle with respective results screenshots.
-
-### Solution
+-   You dont need to initialize the new version, it is automatically initialized from the state variables of previous version.
 
 1. Environment setup for proxy
 2. Configure deploy scripts
 3. Test the deploy scripts
+
+### Solution
+
+"scripts" and "test" folder. For the environment setup please refer to "hints" folder.
 
 ### Solution Screenshots
 
