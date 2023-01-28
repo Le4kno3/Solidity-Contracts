@@ -1,26 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Web3ReactProvider } from '@web3-react/core';
+import { Web3Provider } from '@ethersproject/providers';
+import Welcome from '@components/Welcome';
+
+const getLibrary = (provider, connector) => {
+    return new Web3Provider(provider); // this will vary according to whether you use e.g. ethers or web3.js
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Web3ReactProvider getLibrary={getLibrary}>
+            <Welcome />
+        </Web3ReactProvider>
+    );
 }
 
 export default App;

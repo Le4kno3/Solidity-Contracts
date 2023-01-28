@@ -35,8 +35,11 @@ module.exports = function override(config) {
         "@libraries": path.resolve(__dirname, "src/libraries"),
         "@datatypes": path.resolve(__dirname, "src/types"),
         "@config": path.resolve(__dirname, "src/config.ts"),
+        "@nft": path.resolve(__dirname, "src/components/nft"),
+        "@nftcomponents": path.resolve(__dirname, "src/components/nft/nft-components"),
         "@api": path.resolve(__dirname, "src/api"),
         "@assets": path.resolve(__dirname, "src/assets"),
+        "@nftapi": path.resolve(__dirname, "src/components/nft/nft-api"),
         "@artifacts": path.resolve(__dirname, "src/artifacts"),
     })(config);
     return config;
