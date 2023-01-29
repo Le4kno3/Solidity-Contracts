@@ -10,7 +10,7 @@ Ref: https://www.rocketmortgage.com/learn/real-estate-crowdfunding
 
 ### Hints
 
-"hints" folder has hint
+"hints" folder has hints
 
 ### Tutorials
 
