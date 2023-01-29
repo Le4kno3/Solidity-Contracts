@@ -30,6 +30,6 @@
             "@artifacts/*": ["artifacts/*"]
         }
     },
-    // "include": ["src"],
-    "exclude": ["node_modules", "build"]
+    "include": ["**/*.tsx", "**/*.ts"],
+    "exclude": ["node_modules", "build", "src/test", "src/scripts"]
 }
