@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import MetamaskButton from '@components/Homepage/MetamaskButton';
-import { useWeb3React } from '@web3-react/core';
+import { useWeb3React  } from '@web3-react/core';
 import Grid from '@mui/material/Grid';
 import { contractAddress } from '@cache/deploy';
-import deployedContract from '@artifacts/contracts/L402V2.sol/L402V2.json';
+import deployedContract from '@artifacts/contracts/L402.sol/L402.json';
+import deployedContractV2 from '@artifacts/contracts/L402V2.sol/L402V2.json';
 import WalletAddress from '@components/Homepage/WalletAddress';
 import { TextField } from '@mui/material';
 import { ethers } from 'ethers';
+import StoreButton from './StoreButton';
 
 const SmartContractGrid = () => {
     const [val, setVal] = useState(0);
+    const [newVal, setNewVal] = useState(0);
 
     let contract;
 
@@ -24,28 +27,33 @@ const SmartContractGrid = () => {
         error,
         setError
     } = useWeb3React();
-
     // const provider = library.provider;
 
     console.log('The signer is: ', library);
 
     useEffect(() => {
         const init = async () => {
-            // TODO: init smart contract
+
             contract = new ethers.Contract(
                 contractAddress,
                 deployedContract.abi,
-                library.provider
+                library
             );
-            console.log('The address is: ', contract.address);
-            // TODO: retriveV2.call()
-            let getVal = await contract.retrieveV2();
-            console.log('The value already set is: ', getVal);
-            // TODO: setVal()
-            const newVal = 88;
-            await contract.storeV2(newVal);
-            getVal = await contract.retrieveV2();
-            console.log('The new value set is: ', getVal);
+
+            const signer = library.getSigner();
+
+            console.log("The signer is: ", signer)
+
+            // console.log('The address is: ', library);
+            console.log('The library is: ', library);
+
+            let getVal = await contract.retrieve();
+            console.log('The value already set is: ', getVal.toString());
+
+            console.log('The new value is: ', newVal);
+
+            setVal(getVal.toNumber())
+
         };
 
         init();
@@ -53,11 +61,12 @@ const SmartContractGrid = () => {
 
     return (
         <Grid container justifyContent="center" alignItems="center">
+            
             <Grid item xs={2}>
-                <TextField placeholder={String(val)}></TextField>
+                <StoreButton val={newVal} />
             </Grid>
             <Grid item xs={2}>
-                <MetamaskButton />
+                <TextField placeholder={String(val)} onChange={e => setNewVal(Number(e.target.value))}></TextField>
             </Grid>
         </Grid>
     );

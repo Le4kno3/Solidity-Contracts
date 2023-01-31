@@ -29,7 +29,7 @@ const config: HardhatUserConfig = {
             }
         ]
     },
-    defaultNetwork: 'hardhat_local_node', //hardhat-network-helpers: can only be used in "hardhat" or the "runtime" network. If you want to run the test script on some other blockchain, make sure to remove the use of this library.
+    defaultNetwork: 'polygon_mumbai_testnet', //hardhat-network-helpers: can only be used in "hardhat" or the "runtime" network. If you want to run the test script on some other blockchain, make sure to remove the use of this library.
     networks: {
         hardhat: {
             chainId: 31337
