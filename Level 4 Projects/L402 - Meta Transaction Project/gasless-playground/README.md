@@ -29,3 +29,5 @@ Ethers_Custom_EIP712Sign
 * Currently the gasless transaction is not working.
 * It says "api is undefined
 * Most probably there is some issue with the api key or the biconomy config.
+    * could be the trusted forwarder address is wrong
+    * or biconomy some config is missing
