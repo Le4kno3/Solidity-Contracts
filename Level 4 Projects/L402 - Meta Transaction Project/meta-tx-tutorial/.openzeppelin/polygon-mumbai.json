@@ -9,6 +9,11 @@
       "address": "0xcA49ca9957CEee27b1033571E97Fdee6cC053c75",
       "txHash": "0xf6ab37ed9b884336618561188f7ce7a3af1aab517c31b9055b249cd04b6b2f1f",
       "kind": "transparent"
+    },
+    {
+      "address": "0x6B7DF40a7f1c97A86641532f780Cb86774885a05",
+      "txHash": "0x1f20ae2b4467a0b0f616f60febc1cf6e1447606c459270263ff39f6a6450a583",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -45,6 +50,134 @@
           }
         ],
         "types": {
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "5ceea294366f34408d3cf7b70e95f164e028e74915e60acde06877349f287ba1": {
+      "address": "0xb082f19975f52FDC1FBaD7bb85d37428F02A1aF4",
+      "txHash": "0xfc76fda2fd115e59e7a455c18caecb57475fa02e3c1c865cb39225c0838baa31",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "_trustedForwarder",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "ERC2771Recipient",
+            "src": "@opengsn/contracts/src/ERC2771Recipient.sol:21"
+          },
+          {
+            "label": "_value",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256",
+            "contract": "L402",
+            "src": "contracts/L402.sol:10"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "04c93a25595c3bb4bddd57977966a2a7b2b79a2768ae159a706ab46738139165": {
+      "address": "0xd5e5eaE9E0C2d29Cd38EAd1110D488A286cfaD9b",
+      "txHash": "0xa006e01d00e1cfc2ea6468cff3e28fa4d79da3c3f0f0d50dcf81c3b96b0a6a25",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "_trustedForwarder",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "ERC2771Recipient",
+            "src": "@opengsn/contracts/src/ERC2771Recipient.sol:21"
+          },
+          {
+            "label": "_value",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256",
+            "contract": "L402",
+            "src": "contracts/L402.sol:10"
+          },
+          {
+            "label": "trustedForwarder",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address",
+            "contract": "L402",
+            "src": "contracts/L402.sol:11"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
           "t_bool": {
             "label": "bool",
             "numberOfBytes": "1"

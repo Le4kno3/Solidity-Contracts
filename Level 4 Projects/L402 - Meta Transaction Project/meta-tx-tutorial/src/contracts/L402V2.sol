@@ -13,16 +13,16 @@ contract L402V2 is Initializable {
     }
 
     // Emitted when the stored value changes
-    event ValueChangedV2(uint256 value);
+    event ValueChanged(uint256 value);
 
     // Stores a new value in the contract
     function storeV2(uint256 value) public {
         _value = value;
-        emit ValueChangedV2(value);
+        emit ValueChanged(value);
     }
 
     // Reads the last stored value
-    function retrieveV2() public view returns (uint256) {
+    function retrieve() public view returns (uint256) {
         return _value;
     }
 }

@@ -5,13 +5,14 @@ import * as fs from 'fs';
 dotenv.config();
 
 async function main() {
-    const BoxV2 = await ethers.getContractFactory('L402V2');
+    const BoxV2 = await ethers.getContractFactory('L402');
     const box = await upgrades.upgradeProxy(BOX_ADDRESS, BoxV2); // where "42" is the argument, i.e. initialize(42)
 
-    const value = await box.retrieveV2();
+    const value = await box.retrieve();
     console.log('The value in V2 is: ', value);
     //await box.initialize(53);
-    console.log('Box upgraded:', box.address);
+    console.log('Previous Box upgraded:', box.address);
+    console.log('New Box upgraded:', box.address);
 
     const { BASE_PATH, CURRENT_RPC_URL } = process.env;
 
