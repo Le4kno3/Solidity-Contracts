@@ -23,11 +23,9 @@ yarn start
 
 ```
 Ethers_Custom_EIP712Sign
-Ethers_Custom_PersonalSign
-Ethers_EIP2771_EIP712Sign
-Ethers_EIP2771_PersonalSign
-Web3_Custom_EIP712Sign
-Web3_Custom_PersonalSign
-Web3_EIP2771_EIP712Sign
-Web3_EIP2771_PersonalSign
 ```
+
+#### Error Details
+* Currently the gasless transaction is not working.
+* It says "api is undefined
+* Most probably there is some issue with the api key or the biconomy config.
